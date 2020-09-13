@@ -15,12 +15,18 @@ const useFetch = <T>(resource: string): Response<T> => {
   const fetchData = React.useCallback(async () => {
     try {
       setIsFetchinging(true);
+      const storageValue = localStorage.getItem('data-users');
 
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}${resource}`);
-      const { data } = await response;
-
-      if(data) {
-        setDataApi(data);
+      if(storageValue) {
+        setDataApi(JSON.parse(storageValue));
+      } else {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}${resource}`);
+        const { data } = await response;
+  
+        if(data) {
+          setDataApi(data.data);
+          localStorage.setItem('data-users', JSON.stringify(data.data))
+        }
       }
     } catch(err) {
       setError(err);

@@ -4,6 +4,7 @@ export const StyledInput = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  width: 100%;
 
   label {
     font-size: 1.4rem;
@@ -17,10 +18,16 @@ export const InputWrapper = styled.div`
   display: flex;
   border: 2px solid var(--secondary-color);
   align-items: center;
-  border-radius: 0.7rem;
+  border-radius: 0.5rem;
   height: 4.5rem;
   background: var(--dark);
   padding: 0 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+
+  @media (min-width: 600px) {
+    margin-bottom: 0;
+  }
 
   input {
     background: transparent;

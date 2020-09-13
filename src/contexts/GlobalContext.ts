@@ -1,5 +1,7 @@
 import React from "react";
 
-const GlobalContext = React.createContext({});
+import { IGlobalState } from "../helpers/interfaces";
+
+const GlobalContext = React.createContext<IGlobalState | null>(null);
 
 export default GlobalContext;

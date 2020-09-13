@@ -1,9 +1,13 @@
 import React from "react";
 
+import { WithChildren } from "../../helpers/types";
+
 import { StyledButton } from "./button-styles";
 
-const Button = () => {
-return <StyledButton>Text</StyledButton>
+type ButtonProps = WithChildren<{}>;
+
+const Button = ({ children }: ButtonProps) => {
+return <StyledButton>{children}</StyledButton>
 };
 
 export default Button;

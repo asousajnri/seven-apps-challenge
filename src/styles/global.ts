@@ -25,7 +25,7 @@ export default createGlobalStyle`
   }
 
   body, html, #root {
-    height: 100vh;
+    height: auto;
   }
 
   body {

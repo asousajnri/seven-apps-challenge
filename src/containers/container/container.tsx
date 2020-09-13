@@ -1,10 +1,8 @@
 import React from "react";
 
-import { StyledContainer } from "./container-styles";
+import { WithChildren } from "../../helpers/types";
 
-type WithChildren<T = {}> = T & { 
-  children: React.ReactNode
-};
+import { StyledContainer } from "./container-styles";
 
 type ContainerProps = WithChildren <{
   as?: never;

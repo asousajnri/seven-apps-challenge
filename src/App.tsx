@@ -1,6 +1,8 @@
 import React from 'react';
 
 import useFetch from './hooks/useFetch';
+import { ReactComponent as Loading } from "./assets/images/three-dots.svg";
+import { IUser, IGlobalState } from "./helpers/interfaces";
 
 import GlobalContext from "./contexts/GlobalContext";
 
@@ -10,38 +12,28 @@ import {
   UsersList 
 } from "./components";
 
-interface IUser {
-  name: string;
-  age: number;
-};
-
-type GlobalState = {
-  users: IUser[];
-  isSearch: boolean;
-  isFinded: boolean;
-}
 
 function App() {
-  const [globalState, setGlobalState] = React.useState({})
+  const [globalState, setGlobalState] = React.useState<IGlobalState | null>(null);
   const { isFetchinging, data } = useFetch<IUser>('users');
   React.useEffect(() => {
-    console.log(data);
-
-    const states: GlobalState = {
-      users: data,
-      isSearch: false,
-      isFinded: false,
-    };
-
-    setGlobalState(states);
-  }, [data]);
+    if(!isFetchinging) {  
+      setGlobalState({
+        users: data,
+        isFinded: false,
+        isSearch: false
+      });
+    }
+  }, [data, isFetchinging]);
 
   return (
     <Container>
-      <GlobalContext.Provider value={globalState}>
-        <Header />
-        <UsersList />
-      </GlobalContext.Provider>
+      {isFetchinging ? <Loading width="40" /> : 
+        <GlobalContext.Provider value={globalState}>
+          <Header />
+          <UsersList />
+        </GlobalContext.Provider>
+      }
     </Container>
   );
 }

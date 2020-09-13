@@ -1,6 +1,7 @@
 import React from "react";
 
 import Form from "../form";
+import Button from "../button";
 
 import { StyledHeader } from "./header-styles";
 
@@ -20,6 +21,7 @@ const Header = () => {
           inputType="text" 
           placeholder="Buscar..."
         />
+        <Button>Buscar</Button>
       </Form.Container>
     </StyledHeader>
   );
