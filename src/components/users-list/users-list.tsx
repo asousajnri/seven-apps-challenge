@@ -1,6 +1,5 @@
 import React from 'react';
 import { User, Users, UserPlus } from 'react-feather';
-import { StyledComponent } from "styled-components";
 
 import { useViewContext } from '../../contexts/view';
 
