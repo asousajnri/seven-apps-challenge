@@ -1,5 +1,6 @@
 import React from 'react';
 import { User, Users, UserPlus } from 'react-feather';
+import { StyledComponent } from "styled-components";
 
 import { useViewContext } from '../../contexts/view';
 
@@ -29,7 +30,7 @@ const UsersList = () => {
         </span>
       </StyledUsersListLegend>
       <StyledUsersList>
-        {users.map((user, userIndex) => {
+        {users.map((user, userIndex): any  => {
           if (userIndex < usersPerView) {
             return (
               <StyledUsersListItem key={userIndex}>
