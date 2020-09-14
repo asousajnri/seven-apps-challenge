@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import Context from "./view-context";
+import Context from './view-context';
 
 const useViewContext = () => React.useContext(Context);
 

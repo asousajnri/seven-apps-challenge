@@ -1,5 +1,5 @@
-import React from "react";
-import axios from "axios";
+import React from 'react';
+import axios from 'axios';
 
 type Response<T> = {
   isFetchinging: boolean;
@@ -17,18 +17,18 @@ const useFetch = <T>(resource: string): Response<T> => {
       setIsFetchinging(true);
       const storageValue = localStorage.getItem('data-users');
 
-      if(storageValue) {
+      if (storageValue) {
         setDataApi(JSON.parse(storageValue));
       } else {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}${resource}`);
         const { data } = await response;
-  
-        if(data) {
+
+        if (data) {
           setDataApi(data.data);
-          localStorage.setItem('data-users', JSON.stringify(data.data))
+          localStorage.setItem('data-users', JSON.stringify(data.data));
         }
       }
-    } catch(err) {
+    } catch (err) {
       setError(err);
     } finally {
       setIsFetchinging(false);
@@ -42,8 +42,8 @@ const useFetch = <T>(resource: string): Response<T> => {
   return {
     isFetchinging,
     data: dataApi,
-    error
-  }
+    error,
+  };
 };
 
 export default useFetch;

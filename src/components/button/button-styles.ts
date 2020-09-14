@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledButton = styled.button`
   width: 100%;
@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
   cursor: pointer;
   transition: 0.3s;
   opacity: 0.8;
-  
+
   @media (min-width: 600px) {
     max-width: 20rem;
     margin-left: 2rem;

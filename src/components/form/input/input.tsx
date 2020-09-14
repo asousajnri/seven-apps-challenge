@@ -1,9 +1,9 @@
-import React from "react";
-import { Search, X } from "react-feather";
+import React from 'react';
+import { Search, X } from 'react-feather';
 
-import { useViewContext } from "../../../contexts/view";
+import { useViewContext } from '../../../contexts/view';
 
-import { StyledInput, InputWrapper } from "./input-styles";
+import { StyledInput, InputWrapper } from './input-styles';
 
 type InputProps = {
   name: string;
@@ -13,35 +13,36 @@ type InputProps = {
   placeholder?: string;
 };
 
-const Input = ({ 
-  name, 
-  label, 
-  inputType, 
-  inputRef, 
+const Input = ({
+  name,
+  label,
+  inputType,
+  inputRef,
   placeholder,
 }: InputProps) => {
-  const { 
-    setIsFiredSearch, 
+  const {
+    setIsFiredSearch,
     isFiredSearch,
-    data, 
+    data,
     setUsers,
   } = useViewContext();
 
   const handleCleanSearch = () => {
     setIsFiredSearch(false);
     setUsers(data);
-    if(inputRef && inputRef.current) inputRef.current.value = '';
+    if (inputRef && inputRef.current) inputRef.current.value = '';
   };
 
   return (
     <StyledInput>
       {label && <label htmlFor={name}>{label}</label>}
       <InputWrapper>
-        <Search color="#248cd3"/>
-        <input 
-          ref={inputRef}  
-          type={inputType ||  'text'} 
-          name={name} id={name}
+        <Search color="#248cd3" />
+        <input
+          ref={inputRef}
+          type={inputType || 'text'}
+          name={name}
+          id={name}
           placeholder={placeholder}
         />
         {isFiredSearch && <button onClick={handleCleanSearch}><X color="#248cd3" /></button>}

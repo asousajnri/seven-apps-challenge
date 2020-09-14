@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledContainer = styled.form`
   width: 100%;
@@ -8,4 +8,4 @@ export const StyledContainer = styled.form`
   @media (min-width: 600px) {
     flex-direction: row;
   }
-`; 
+`;

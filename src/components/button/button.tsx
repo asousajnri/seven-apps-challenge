@@ -1,13 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import { WithChildren } from "../../helpers/types";
+import { WithChildren } from '../../helpers/types';
 
-import { StyledButton } from "./button-styles";
+import { StyledButton } from './button-styles';
 
 type ButtonProps = WithChildren<{}>;
 
-const Button = ({ children }: ButtonProps) => {
-return <StyledButton>{children}</StyledButton>
-};
+const Button = ({ children }: ButtonProps) => <StyledButton>{children}</StyledButton>;
 
 export default Button;
