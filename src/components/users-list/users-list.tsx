@@ -29,7 +29,7 @@ const UsersList = () => {
         </span>
       </StyledUsersListLegend>
       <StyledUsersList>
-        {users.map((user, userIndex): any  => {
+        {users.map((user, userIndex) => {
           if (userIndex < usersPerView) {
             return (
               <StyledUsersListItem key={userIndex}>

@@ -34,6 +34,7 @@ module.exports = {
         ts: 'never',
       },
     ],
+    "array-callback-return": ["error", { allowImplicit: true }],
     'react/prop-types': 'off',
     'import/no-unresolved': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.ts', '.tsx'] }],
