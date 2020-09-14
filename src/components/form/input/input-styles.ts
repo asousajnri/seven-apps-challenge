@@ -38,4 +38,12 @@ export const InputWrapper = styled.div`
     width: 100%;
     padding: 0 1rem;
   }
+
+  button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    cursor: pinter;
+  }
 `;

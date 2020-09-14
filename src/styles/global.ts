@@ -22,13 +22,12 @@ export default createGlobalStyle`
 
   html {
     font-size: 62.5%;
-  }
-
-  body, html, #root {
-    height: auto;
+    height: -webkit-fill-available;
   }
 
   body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     background: var(--bg-body);
   }
 

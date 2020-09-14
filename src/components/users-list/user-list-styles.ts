@@ -83,3 +83,41 @@ export const StyledUsersListLoadMore = styled.li`
     text-transform: uppercase;
   }
 `;
+
+export const StyledUsersListLegend = styled.div`
+  width: max-content;
+  max-width: 36rem;
+  margin: 0 auto 3rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--dark);
+  color: var(--secondary-color);
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+
+  .icon-users {
+    margin-right: 1rem;
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    font-size: 1.6rem;
+
+    @media (min-width: 600px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  span {
+    font-size: 1.6rem;
+    color: var(--light);
+
+    @media (min-width: 600px) {
+      font-size: 2rem;
+    }
+  }
+`;

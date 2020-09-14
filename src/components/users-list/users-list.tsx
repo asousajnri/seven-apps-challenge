@@ -1,49 +1,57 @@
 import React from "react";
-import { User, UserPlus } from "react-feather";
+import { User, Users, UserPlus } from "react-feather";
 
-import { IUser } from "../../helpers/interfaces";
-
-import GlobalContext from "../../contexts/GlobalContext";
+import { useViewContext } from "../../contexts/view";
 
 import { 
   StyledUsersList, 
   StyledUsersListItem, 
-  StyledUsersListLoadMore 
+  StyledUsersListLoadMore,
+  StyledUsersListLegend
 } from "./user-list-styles";;
 
 const UsersList = () => {
-  const states = React.useContext(GlobalContext);
-  const [userListing, setUserListing] = React.useState<IUser[] | undefined>([]);
-  const [userListingNumberLoadUser, setUserListingNumberLoadUser] = React.useState(15);
-
-  React.useEffect(() => {
-    const userFiltered: IUser[] | undefined = states?.users.filter((user, userIndex) => {
-      if(userIndex < userListingNumberLoadUser) return user;
-    });
-
-    setUserListing(userFiltered);
-  }, [states, userListingNumberLoadUser]);
+  const { 
+    users, 
+    usersPerView, 
+    setUsersPerView 
+  } = useViewContext();
 
   return (
-    <StyledUsersList>
-      {userListing?.map((user, userIndex) => 
-        (
-          <StyledUsersListItem key={userIndex}>
+    <>
+      <StyledUsersListLegend>
+        <h3>
+          <Users className="icon-users"/>
+          Usuários (Total): 
+        </h3>
+        <span>
+          {users.length}
+        </span>
+      </StyledUsersListLegend>
+      <StyledUsersList>
+        {users.map((user, userIndex) => {
+          if(userIndex < usersPerView) return (
+            <StyledUsersListItem key={userIndex}>
               <div className="user-avatar">
                 <User color="#248cd3" size="80"/>
               </div>
               <div className="user-infos">
                 <h2>{user.name}</h2>
-                <h3>{user.age} anos</h3>
+                <h3>{user.age} ano(s)</h3>
               </div>
-          </StyledUsersListItem>))
-      }
+            </StyledUsersListItem>)}
+          )}
 
-      <StyledUsersListLoadMore onClick={() => setUserListingNumberLoadUser((prev) => prev + 15)}>
-        <UserPlus size="30"/>
-        <h2>Carregar mais usuários</h2>
-      </StyledUsersListLoadMore>
-    </StyledUsersList>
+        {users.length > 0 && (
+          <StyledUsersListLoadMore 
+            onClick={() => setUsersPerView((prev) => prev + 15)}
+          >
+            <UserPlus size="30"/>
+            <h2>Carregar mais usuários</h2>
+          </StyledUsersListLoadMore>
+        )}
+      </StyledUsersList>
+    </>
   );
 };
 

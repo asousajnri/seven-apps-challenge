@@ -1,15 +1,16 @@
 import React from "react";
 import { Search, X } from "react-feather";
 
+import { useViewContext } from "../../../contexts/view";
+
 import { StyledInput, InputWrapper } from "./input-styles";
 
 type InputProps = {
   name: string;
   label?: string;
   inputType?: string;
-  inputRef?: React.MutableRefObject<null>;
+  inputRef?: React.MutableRefObject<HTMLInputElement | null>;
   placeholder?: string;
-  researched?: boolean;
 };
 
 const Input = ({ 
@@ -18,8 +19,20 @@ const Input = ({
   inputType, 
   inputRef, 
   placeholder,
-  researched
 }: InputProps) => {
+  const { 
+    setIsFiredSearch, 
+    isFiredSearch,
+    data, 
+    setUsers,
+  } = useViewContext();
+
+  const handleCleanSearch = () => {
+    setIsFiredSearch(false);
+    setUsers(data);
+    if(inputRef && inputRef.current) inputRef.current.value = '';
+  };
+
   return (
     <StyledInput>
       {label && <label htmlFor={name}>{label}</label>}
@@ -31,7 +44,7 @@ const Input = ({
           name={name} id={name}
           placeholder={placeholder}
         />
-        {researched && <button><X color="#248cd3" /></button>}
+        {isFiredSearch && <button onClick={handleCleanSearch}><X color="#248cd3" /></button>}
       </InputWrapper>
     </StyledInput>
   );
